@@ -4,7 +4,13 @@ const app = express();
 const port = 3001;
 
 app.use(express.json());
+
+morgan.token("data", function (req, res) {
+  return JSON.stringify(res.body);
+});
+
 app.use(morgan("tiny"));
+app.use(morgan("data"));
 
 let persons = [
   {
