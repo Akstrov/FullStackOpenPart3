@@ -27,13 +27,8 @@ const personSchema = new mongoose.Schema({
     validate: {
       validator: function (v) {
         const arr = v.split('-')
-        if (
-          arr.lenght !== 2 &&
-          !Number.isInteger(arr[0]) &&
-          !Number.isInteger(arr[1])
-        )
-          return false
-        if (arr[0].length !== 3 || arr[0].length !== 2) return false
+        if (arr.length !== 2) return false
+        if (arr[0].length !== 3 && arr[0].length !== 2) return false
         return true
       },
       message: (props) =>
